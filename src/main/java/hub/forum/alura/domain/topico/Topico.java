@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -15,13 +18,15 @@ import java.time.LocalDateTime;
 public class Topico {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @NotNull
     @NotBlank
     private String titulo;
     @NotNull
     @NotBlank
     private String mensagem;
+    @CreationTimestamp
+    @Column(name = "dataCriacao")
     private LocalDateTime dataCriacao;
     private Boolean ativo;
     private String autor;

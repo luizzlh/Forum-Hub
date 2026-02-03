@@ -2,8 +2,11 @@ package hub.forum.alura.domain.topico;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import org.aspectj.weaver.ast.Not;
 
-public record DadosTopico(
+import java.time.LocalDateTime;
+
+public record TopicoRequestDTO(
         @NotBlank
         @NotNull
         String titulo,
@@ -12,9 +15,6 @@ public record DadosTopico(
         String mensagem,
         @NotBlank
         @NotNull
-        String autor,
-        @NotBlank
-        @NotNull
-        String curso
+        String nomeCurso
 ) {
 }

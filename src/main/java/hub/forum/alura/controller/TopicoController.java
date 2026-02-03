@@ -1,8 +1,8 @@
 package hub.forum.alura.controller;
 
-import hub.forum.alura.domain.topico.DadosTopico;
-import hub.forum.alura.domain.topico.Topico;
 import hub.forum.alura.domain.topico.TopicoRepository;
+import hub.forum.alura.domain.topico.TopicoRequestDTO;
+import hub.forum.alura.domain.topico.TopicoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +19,14 @@ public class TopicoController {
     @Autowired
     private TopicoRepository topicoRepository;
 
+    @Autowired
+    private TopicoService topicoService;
+
     @PostMapping
     @Transactional
-    public ResponseEntity cadastrarTopico(@RequestBody @Valid DadosTopico dados){
-        return ResponseEntity.ok().body(topicoRepository.save(dados));
+    public ResponseEntity cadastrarTopico(@RequestBody @Valid TopicoRequestDTO dados){
+        var dto = topicoService.salvarTopico(dados);
+        return ResponseEntity.ok(dto);
     }
 
 }
