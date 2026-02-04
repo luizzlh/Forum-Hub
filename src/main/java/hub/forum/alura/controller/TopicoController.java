@@ -34,4 +34,10 @@ public class TopicoController {
         return ResponseEntity.ok(listTopics);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<TopicoDetailsDTO> buscarTopicoPorId(@PathVariable Long id){
+        var topico = topicoService.recuperarTopico(id);
+        return ResponseEntity.ok(topico);
+    }
+
 }

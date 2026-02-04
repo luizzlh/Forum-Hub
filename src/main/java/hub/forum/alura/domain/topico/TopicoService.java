@@ -24,4 +24,13 @@ public class TopicoService {
         throw new ValidacaoException("Não foi possível criar o tópico!");
     }
 
+    public TopicoDetailsDTO recuperarTopico(Long id){
+        var topico = topicoRepository.getReferenceById(id);
+
+        if(topico == null){
+            throw new ValidacaoException("Tópico não existe!");
+        }
+        return new TopicoDetailsDTO(topico);
+    }
+
 }
