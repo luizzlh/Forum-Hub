@@ -9,8 +9,9 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface TopicoRepository extends JpaRepository<Topico, Long> {
 
-    @Query("SELECT T FROM Topico T WHERE T.titulo = :titulo AND T.mensagem = :mensagem")
-    Topico verificarExistenciaDeTopico(@NotBlank @NotNull String titulo, @NotBlank @NotNull String mensagem);
+    @Query("SELECT T FROM Topico T WHERE T.titulo = :title AND T.mensagem = :message")
+    Topico verificaExistenciaDeTopico(@NotBlank @NotNull String title, @NotBlank @NotNull String message);
 
     Page<Topico> findAllByAtivoTrue(Pageable pagina);
+
 }

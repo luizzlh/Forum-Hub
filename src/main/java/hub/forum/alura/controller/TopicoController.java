@@ -22,22 +22,38 @@ public class TopicoController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity cadastrarTopico(@RequestBody @Valid TopicoRequestDTO dados){
-        var dto = topicoService.salvarTopico(dados);
+    public ResponseEntity salvarTopico(@RequestBody @Valid TopicoRequestDTO data){
+        var dto = topicoService.salvarTopico(data);
         return ResponseEntity.ok(dto);
     }
 
     @GetMapping
     public ResponseEntity<Page<TopicoResponseDTO>> listarTopicos(@PageableDefault(size = 10,
-            sort = {"dataCriacao"}) Pageable pagina){
-        var listTopics = topicoRepository.findAllByAtivoTrue(pagina).map(TopicoResponseDTO::new);
-        return ResponseEntity.ok(listTopics);
+            sort = {"dataCriacao"}) Pageable page){
+        var lista = topicoRepository.findAllByAtivoTrue(page).map(TopicoResponseDTO::new);
+        return ResponseEntity.ok(lista);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<TopicoDetailsDTO> buscarTopicoPorId(@PathVariable Long id){
         var topico = topicoService.recuperarTopico(id);
         return ResponseEntity.ok(topico);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity ddedletarTopicoPorId(@PathVariable Long id){
+        var topico = topicoRepository.getReferenceById(id);
+        topico.excluir();
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity atualizaTopico(@PathVariable Long id, @RequestBody @Valid TopicoRequestDTO dados){
+        var topico = topicoRepository.getReferenceById(id);
+        topico.updateTopico(dados);
+        return ResponseEntity.ok(new TopicoDetailsDTO(topico));
     }
 
 }

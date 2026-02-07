@@ -11,13 +11,12 @@ public class TopicoService {
     private TopicoRepository topicoRepository;
 
     public TopicoResponseDTO salvarTopico(TopicoRequestDTO dadosTopico){
-        var existeTopico = topicoRepository.verificarExistenciaDeTopico(dadosTopico.titulo(), dadosTopico.mensagem());
-        if(existeTopico != null){
+        var checaTopico = topicoRepository.verificaExistenciaDeTopico(dadosTopico.titulo(), dadosTopico.mensagem());
+        if(checaTopico != null){
             throw new ValidacaoException("Tópico já existente!");
         }
-        if(existeTopico == null){
-            Topico topico = new Topico(null, dadosTopico.titulo(), dadosTopico.mensagem(),
-                    null, true, "Autor", dadosTopico.nomeCurso());
+        if(checaTopico == null){
+            Topico topico = new Topico(dadosTopico);
             topicoRepository.save(topico);
             return new TopicoResponseDTO(topico);
         }
@@ -32,5 +31,7 @@ public class TopicoService {
         }
         return new TopicoDetailsDTO(topico);
     }
+
+
 
 }
