@@ -32,6 +32,12 @@ public class TopicoService {
         return new TopicoDetailsDTO(topico);
     }
 
-
+    public void deletarTopico(Long id){
+        var topico = topicoRepository.getReferenceById(id);
+        if(topico == null){
+            throw new ValidacaoException("Tópico não existe!");
+        }
+        topicoRepository.deleteById(id);
+    }
 
 }

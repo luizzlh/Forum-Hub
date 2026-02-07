@@ -42,9 +42,8 @@ public class TopicoController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity ddedletarTopicoPorId(@PathVariable Long id){
-        var topico = topicoRepository.getReferenceById(id);
-        topico.excluir();
+    public ResponseEntity deletarTopicoPorId(@PathVariable Long id){
+        topicoService.deletarTopico(id);
         return ResponseEntity.noContent().build();
     }
 
