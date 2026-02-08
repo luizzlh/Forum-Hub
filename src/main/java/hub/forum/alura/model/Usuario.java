@@ -1,5 +1,7 @@
 package hub.forum.alura.model;
 
+import hub.forum.alura.dto.TopicoRequestDTO;
+import hub.forum.alura.dto.UsuarioRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -26,6 +28,11 @@ public class Usuario implements UserDetails {
     private Long id;
     private String login;
     private String senha;
+
+    public Usuario(UsuarioRequestDTO usuarioRequestDTO) {
+        this.login = usuarioRequestDTO.login();
+        this.senha = usuarioRequestDTO.senha();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
