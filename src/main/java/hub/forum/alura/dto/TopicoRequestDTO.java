@@ -1,4 +1,4 @@
-package hub.forum.alura.domain.topico;
+package hub.forum.alura.dto;
 
 import jakarta.validation.constraints.NotBlank;
 

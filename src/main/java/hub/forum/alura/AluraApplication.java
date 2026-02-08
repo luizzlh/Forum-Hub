@@ -1,6 +1,6 @@
 package hub.forum.alura;
 
-import hub.forum.alura.domain.topico.TopicoRepository;
+import hub.forum.alura.repository.TopicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

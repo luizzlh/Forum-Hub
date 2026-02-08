@@ -1,5 +1,6 @@
-package hub.forum.alura.infra.security;
+package hub.forum.alura.config;
 
+import hub.forum.alura.security.SecurityFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

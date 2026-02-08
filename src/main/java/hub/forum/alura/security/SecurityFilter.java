@@ -1,6 +1,7 @@
-package hub.forum.alura.infra.security;
+package hub.forum.alura.security;
 
-import hub.forum.alura.domain.usuario.UsuarioRepository;
+import hub.forum.alura.repository.UsuarioRepository;
+import hub.forum.alura.service.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

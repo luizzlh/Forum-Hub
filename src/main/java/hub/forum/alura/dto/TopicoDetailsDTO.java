@@ -1,4 +1,6 @@
-package hub.forum.alura.domain.topico;
+package hub.forum.alura.dto;
+
+import hub.forum.alura.model.Topico;
 
 import java.time.LocalDateTime;
 

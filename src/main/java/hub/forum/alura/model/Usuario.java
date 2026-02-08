@@ -1,4 +1,4 @@
-package hub.forum.alura.domain.usuario;
+package hub.forum.alura.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

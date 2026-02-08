@@ -1,5 +1,6 @@
-package hub.forum.alura.domain.topico;
+package hub.forum.alura.repository;
 
+import hub.forum.alura.model.Topico;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.Page;

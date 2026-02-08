@@ -1,6 +1,10 @@
 package hub.forum.alura.controller;
 
-import hub.forum.alura.domain.topico.*;
+import hub.forum.alura.dto.TopicoDetailsDTO;
+import hub.forum.alura.dto.TopicoRequestDTO;
+import hub.forum.alura.dto.TopicoResponseDTO;
+import hub.forum.alura.repository.TopicoRepository;
+import hub.forum.alura.service.TopicoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,6 +1,11 @@
-package hub.forum.alura.domain.topico;
+package hub.forum.alura.service;
 
-import hub.forum.alura.infra.exception.ValidacaoException;
+import hub.forum.alura.dto.TopicoDetailsDTO;
+import hub.forum.alura.dto.TopicoRequestDTO;
+import hub.forum.alura.dto.TopicoResponseDTO;
+import hub.forum.alura.exception.ValidacaoException;
+import hub.forum.alura.model.Topico;
+import hub.forum.alura.repository.TopicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
