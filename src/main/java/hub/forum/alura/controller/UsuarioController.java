@@ -1,12 +1,16 @@
 package hub.forum.alura.controller;
 
+import hub.forum.alura.dto.TopicoResponseDTO;
 import hub.forum.alura.dto.UsuarioRequestDTO;
+import hub.forum.alura.dto.UsuarioResponseDTO;
 import hub.forum.alura.repository.UsuarioRepository;
 import hub.forum.alura.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,8 +31,9 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Response>> listarUsuarios(){
-        return null;
+    public ResponseEntity<Page<UsuarioResponseDTO>> listarUsuarios(@PageableDefault(size = 10) Pageable page){
+        var lista = usuarioRepository.findAll(page).map(UsuarioResponseDTO::new);
+        return ResponseEntity.ok(lista);
     }
 
 }
