@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("topicos")
 public class TopicoController {
@@ -39,9 +41,12 @@ public class TopicoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<TopicoDetailsDTO> buscarTopicoPorId(@PathVariable Long id){
-        var topico = topicoService.recuperarTopico(id);
-        return ResponseEntity.ok(topico);
+    public ResponseEntity<Optional<TopicoDetailsDTO>> buscarTopicoPorId(@PathVariable Long id){
+         Optional<TopicoDetailsDTO> topico = topicoService.recuperarTopico(id);
+         if(topico.isPresent()){
+            return ResponseEntity.ok(topico);
+         }
+        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")

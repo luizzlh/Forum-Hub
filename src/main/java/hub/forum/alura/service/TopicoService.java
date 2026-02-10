@@ -9,6 +9,8 @@ import hub.forum.alura.repository.TopicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class TopicoService {
 
@@ -28,13 +30,13 @@ public class TopicoService {
         throw new ValidacaoException("Não foi possível criar o tópico!");
     }
 
-    public TopicoDetailsDTO recuperarTopico(Long id){
+    public Optional<TopicoDetailsDTO> recuperarTopico(Long id){
         var topico = topicoRepository.getReferenceById(id);
 
         if(topico == null){
             throw new ValidacaoException("Tópico não existe!");
         }
-        return new TopicoDetailsDTO(topico);
+        return Optional.of(new TopicoDetailsDTO(topico));
     }
 
     public void deletarTopico(Long id){
